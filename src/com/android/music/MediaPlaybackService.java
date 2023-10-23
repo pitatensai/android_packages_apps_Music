@@ -130,7 +130,7 @@ public class MediaPlaybackService extends Service {
     private final Shuffler mRand = new Shuffler();
     private int mOpenFailedCounter = 0;
     String[] mCursorCols = new String[] {
-            "audio._id AS _id", // index must match IDCOLIDX below
+            MediaStore.Audio.Media._ID, // index must match IDCOLIDX below
             MediaStore.Audio.Media.ARTIST, MediaStore.Audio.Media.ALBUM,
             MediaStore.Audio.Media.TITLE, MediaStore.Audio.Media.DATA,
             MediaStore.Audio.Media.MIME_TYPE, MediaStore.Audio.Media.ALBUM_ID,
@@ -1004,7 +1004,6 @@ public class MediaPlaybackService extends Service {
 
     private Cursor getCursorForId(long lid) {
         String id = String.valueOf(lid);
-
         Cursor c = getContentResolver().query(
                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, mCursorCols, "_id=" + id, null, null);
         if (c != null) {

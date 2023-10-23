@@ -511,10 +511,11 @@ public class PlaylistBrowserActivity
 
         // check if there are any podcasts
         Cursor counter = MusicUtils.query(this, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-                new String[] {"count(*)"}, "is_podcast=1", null, null);
+                null, "is_podcast=1", null, null);
         if (counter != null) {
             counter.moveToFirst();
-            int numpodcasts = counter.getInt(0);
+            //int numpodcasts = counter.getInt(0);
+            int numpodcasts = counter.getCount();
             counter.close();
             if (numpodcasts > 0) {
                 ArrayList<Object> podcasts = new ArrayList<Object>(2);

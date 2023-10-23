@@ -573,9 +573,10 @@ public class MusicUtils {
             // so the play_order field can be maintained.
             String[] cols = new String[] {"count(*)"};
             Uri uri = MediaStore.Audio.Playlists.Members.getContentUri("external", playlistid);
-            Cursor cur = resolver.query(uri, cols, null, null, null);
+            Cursor cur = resolver.query(uri, null, null, null, null);
             cur.moveToFirst();
-            int base = cur.getInt(0);
+            //int base = cur.getInt(0);
+            int base = cur.getCount();
             cur.close();
             int numinserted = 0;
             for (int i = 0; i < size; i += 1000) {
